@@ -16,7 +16,7 @@ const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick}) => (
 const Sidebar = ({isActive, setIsActive, navlinks}) => {
   const navigate = useNavigate();
   //const [isActive, setIsActive] = useState('dashboard')
-  
+  //const {connect, address, clearAddress} = useStateContext();
   return (
     <div className='flex items-center flex-col top-5 h-[93vh]'>
 
