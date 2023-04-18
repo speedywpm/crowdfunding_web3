@@ -21,11 +21,13 @@ const DisplayCampaigns = ({title, isLoading, campaigns}) => {
                     You have not created any campaigns yet...
                 </p>
             )}
-            {!isLoading && campaigns.length > 0 && campaigns.map((campaign) => <FundCard
-                key={campaign.id}
-                {...campaign}
-                handleClick={() => handleNavigate(campaign)}
-            />)}
+            {!isLoading && campaigns.length > 0 && campaigns.map((campaign, index) => 
+  <FundCard
+    key={campaign.id || index}
+    {...campaign}
+    handleClick={() => handleNavigate(campaign)}
+  />
+)}
         </div>
     </div>
   )
