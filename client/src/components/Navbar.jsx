@@ -4,11 +4,13 @@ import {CustomButton} from './';
 import {logo, menu, search, thirdweb} from '../assets';
 //import {navlinks} from '../constants';
 import './Layout';
+import { useStateContext } from '../context';
 const Navbar = ({isActive, setIsActive, navlinks}) => {
   const navigate = useNavigate();
   //const [isActive, setIsActive] = useState('dashboard');
   const [toggleDrawer, setToggleDrawer] = useState(false);
-  const address = '0xabc';
+  const {connect, address} = useStateContext();
+  
 
   const capitalizeFirstLetter = (string) => {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -30,7 +32,7 @@ const Navbar = ({isActive, setIsActive, navlinks}) => {
           styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
           handleClick={() => {
             if(address) navigate('create-campaign')
-            else 'connectWallet()';
+            else connect();
           }}
         />
 
@@ -82,7 +84,7 @@ const Navbar = ({isActive, setIsActive, navlinks}) => {
               styles={address ? 'bg-[#1dc071]' : 'bg-[#8c6dfd]'}
               handleClick={() => {
                 if(address) navigate('create-campaign')
-                else 'connectWallet()';
+                else connect();
           }}
         />
             </div>

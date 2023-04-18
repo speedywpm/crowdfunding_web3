@@ -4,10 +4,11 @@ import {ethers} from 'ethers';
 import {money} from '../assets';
 import {CustomButton, FormField} from '../components';
 import {checkIfImage} from '../utils';
-
+import { useStateContext } from '../context';
 const CreateCampaign = () => {
   const navigate = useNavigate;
   const [isLoading, setisLoading] = useState(false);
+  const {createCampaign} = useStateContext();
   const [form, setForm] = useState({
     name: '',
     title: '',
@@ -19,8 +20,23 @@ const CreateCampaign = () => {
   const handleFormFieldChange = (fieldName, e) => {
     setForm({ ...form, [fieldName]: e.target.value })
   }
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    checkIfImage(form.image, async (exists) => {
+      if(exists)
+      {
+        setisLoading(true);
+        await createCampaign({...form, target: ethers.utils.parseUnits(form.target, 18)})
+        setisLoading(false);
+        navigate('/');
+      }
+      else
+      {
+        alert('Image URL is invalid')
+        setForm({...form, image: ''});
+      }
+    })
+    //await createCampaign({...form, target: ethers.utils.parseUnits(form.target, 18)})
     console.log(form);
   }
 
