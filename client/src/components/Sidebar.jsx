@@ -18,7 +18,8 @@ const Sidebar = ({isActive, setIsActive, navlinks}) => {
   //const [isActive, setIsActive] = useState('dashboard')
   
   return (
-    <div className='flex justify-between items-center flex-col sticky top-5 h-[93vh]'>
+    <div className='flex items-center flex-col top-5 h-[93vh]'>
+
       <Link to="/">
         <Icon styles='w-[52px] h-[52px] bg-[#2c2f32]' imgUrl={logo}/>
       </Link>

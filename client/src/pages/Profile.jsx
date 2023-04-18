@@ -15,7 +15,7 @@ const Profile = () => {
   useEffect(() => {if(contract) fetchCampaigns();}, [address, contract]);
   return (
     <DisplayCampaigns
-      title="All campaigns"
+      title="My campaigns"
       isLoading={isLoading}
       campaigns={campaigns}
     />

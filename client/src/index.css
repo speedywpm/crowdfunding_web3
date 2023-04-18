@@ -16,3 +16,35 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   filter: invert(0.8);
 }
+
+html {
+  overflow-y: scroll;
+}
+
+/* styling the scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* track */
+::-webkit-scrollbar-track {
+  background: #1c1c24; /* Change this to match your theme's background color */
+  border-radius: 10px;
+}
+
+/* handle */
+::-webkit-scrollbar-thumb {
+  background: #4a4a57; /* Change this to match your theme's accent color */
+  border-radius: 10px;
+}
+
+/* handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3a43; /* Change this to a slightly darker shade of your accent color */
+}
+
+/* firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #4a4a57 #1c1c24; /* Change these colors to match your theme */
+}
