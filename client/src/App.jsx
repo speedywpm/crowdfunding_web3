@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Home, Profile, CreateCampaign, CampaignDetails, Payment } from './pages';
+import { Home, Profile, CreateCampaign, CampaignDetails, Payment, Withdraw } from './pages';
 import Layout from './components/Layout';
 import {navlinks} from './constants';
 const App = () => {
@@ -11,6 +11,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/payment" element={<Payment />}/>
+            <Route path="/withdraw" element={<Withdraw />}/>
             <Route path="/profile" element={<Profile />}/>
             <Route path="/create-campaign" element={<CreateCampaign />}/>
             <Route path="/campaign-details/:id" element={<CampaignDetails />}/>

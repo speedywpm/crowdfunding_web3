@@ -66,4 +66,18 @@ contract CrowdFunding {
 
         return allCampaigns;
     }
+
+    function withdrawFunds(uint256 _id) public {
+        Campaign storage campaign = campaigns[_id];
+
+        require(msg.sender == campaign.owner, "Only the campaign owner can withdraw funds.");
+        require(campaign.deadline < block.timestamp, "Cannot withdraw funds before the deadline.");
+        require(campaign.amountCollected >= campaign.target, "Cannot withdraw funds before reaching the target amount.");
+
+        uint256 amountToWithdraw = campaign.amountCollected;
+        campaign.amountCollected = 0;
+
+        (bool sent,) = payable(campaign.owner).call{value: amountToWithdraw}("");
+        require(sent, "Failed to withdraw funds.");
+    }
 }

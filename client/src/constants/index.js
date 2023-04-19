@@ -21,8 +21,8 @@ export const navlinks = [
   {
     name: 'withdraw',
     imgUrl: withdraw,
-    link: '/',
-    disabled: true,
+    link: '/withdraw',
+    disabled: false,
   },
   {
     name: 'profile',

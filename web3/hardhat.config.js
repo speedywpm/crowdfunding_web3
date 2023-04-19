@@ -4,8 +4,9 @@ module.exports = {
     version: '0.8.9',
     defaultNetwork: 'goerli',
     networks: {
-      goerli: {
-        url: 'https://rpc.ankr.com/eth_goerli',
+      sepolia: {
+        url: 'https://eth-sepolia.g.alchemy.com/v2/7-LkHTNMNYSwKOV4eWYEE0Q8DkQcRj2Y',
+        chainId: 11155111,
         accounts: [`0x${process.env.PRIVATE_KEY}`]
       }
     },
