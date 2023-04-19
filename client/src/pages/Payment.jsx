@@ -5,8 +5,19 @@ import QRCode from 'react-qr-code';
 const Payment = () => {
   const { connect, address } = useStateContext();
   console.log(address);
+
+  if (!address) {
+    return (
+      <div className="text-white bg-[#1c1c24] mt-[50px] rounded-[20px] p-6 flex flex-col items-center">
+        <h3 className="font-epilogue text-[20px] font-semibold">
+          Please connect your wallet
+        </h3>
+      </div>
+    );
+  }
+
   return (
-    <div className="text-white bg-[#1c1c24] mt-[50px] rounded-[20px] p-6 flex flex-col items-center">
+    <div className="text-white bg-[#1c1c24] mt-[50px] rounded-[10px] p-6 flex flex-col items-center">
       <h3 className="font-epilogue text-[20px] font-semibold">
         Payment
       </h3>
