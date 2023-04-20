@@ -1,28 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { CustomButton } from '../components';
-import { ethlogo } from '../assets';
-import { useStateContext } from '../context';
-
+import {ethlogo} from '../assets'
 
 const Withdraw = () => {
-  const [totalRaised, setTotalRaised] = useState(0);
-  const { address, contract, getUserCampaigns } = useStateContext();
-
-  const fetchTotalRaised = async () => {
-    const campaigns = await getUserCampaigns();
-    const raisedAmount = campaigns.reduce((total, campaign) => {
-      const amountCollected = parseFloat(campaign.amountCollected);
-      return total + (isNaN(amountCollected) ? 0 : amountCollected);
-    }, 0);
-    setTotalRaised(raisedAmount);
-  };
-
-  useEffect(() => {
-    if (contract) {
-      fetchTotalRaised();
-    }
-  }, [address, contract]);
-
   const handleCoinbase = () => {
     window.open('https://coinbase.com', '_blank');
   };
@@ -35,7 +15,7 @@ const Withdraw = () => {
   const handleCryptocom = () => {
     window.open('https://crypto.com', '_blank');
   };
-  console.log(totalRaised);
+
   return (
     <div className="text-white bg-[#1c1c24] mt-[50px] rounded-[10px] p-6 flex flex-col items-center">
       <h3 className="font-epilogue text-[20px] font-semibold">Withdraw Funds</h3>
@@ -47,9 +27,8 @@ const Withdraw = () => {
         So far you have earned
       </h3>
       
-      <div className="bg-[#1dc071] text-white rounded-[10px] px-2 py-1 font-epilogue font-semibold flex items-center">
-        <img src={ethlogo} className="w-[24px] h-[24px] mr-2" />
-        {totalRaised.toFixed(4)} ETH
+      <div className='flex flex-wrap justify-center gap-4'>
+      <img src={ethlogo} className='w-[10%]'/>
       </div>
       <div className="flex flex-wrap justify-center gap-4">
         <CustomButton

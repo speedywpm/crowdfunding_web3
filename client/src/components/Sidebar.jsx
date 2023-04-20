@@ -4,7 +4,7 @@ import {logo, sun} from '../assets';
 //import {navlinks} from '../constants';
 import './Layout';
 const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick}) => (
-  <div className={`w-[48px] h-[48px] rounded-[10px] ${isActive && isActive === name && 'bg-[#2c2f32]'} flex justify-center items-center ${!disabled && 'cursor-pointer'} ${styles}`} onClick={handleClick}>
+  <div className={`w-[48px] h-[48px] rounded-[10px] ${isActive && isActive === name && 'bg-[#2c2f32]'} flex justify-center items-center ${!disabled && 'cursor-pointer'} ${styles} hover:bg-[#3a3d42] transition-colors duration-200`} onClick={handleClick}>
     {!isActive ? (
       <img src={imgUrl} alt="fund_logo" className="w-1/2 h-1/2"/>
     ) : (
@@ -12,6 +12,7 @@ const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick}) => (
     )}
   </div>
 )
+
 
 const Sidebar = ({isActive, setIsActive, navlinks}) => {
   const navigate = useNavigate();

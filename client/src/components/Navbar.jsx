@@ -43,13 +43,14 @@ const Navbar = ({isActive, setIsActive, navlinks}) => {
         </Link>
       </div>
       <div className='sm:hidden flex justify-between items-center relative'>
-      <div className='w-[40px] h-[40px] rounded-[10px] bg-[#2c2f32] flex justify-center items-center cursor-pointer'>
-            <img src={thirdweb} alt="user" className='w-[60%] h-[60%] object-contain'/>
-            
-          </div>
-          <Link to="/">
-            <img src={logo} alt="logo" className='w-[34px] h-[34px] object-contain items-center'/>
-          </Link>
+            <div className='w-[40px] h-[40px] rounded-[10px] bg-[#2c2f32] flex justify-center items-center cursor-pointer'>
+              <img src={thirdweb} alt="user" className='w-[60%] h-[60%] object-contain'/>
+            </div>
+            <Link to="/">
+              <div className='w-[34px] h-[34px] flex justify-center items-center hover:bg-[#3a3d42] transition-colors duration-200 rounded-[5px]'>
+                <img src={logo} alt="logo" className='w-[30px] h-[30px] object-contain'/>
+              </div>
+            </Link>
           <img src={menu} alt="menu" className='w-[34px] h-[34px] object-contain cursor-pointer' onClick={() => setToggleDrawer((prev) => !prev)}/>
 
           <div className={`absolute top-[60px] right-0 left-0 bg-[#1c1c24] z-10 shadow-secondary py-4 rounded-[10px] ${!toggleDrawer ? '-translate-y-[100vh]' : 'translate-y-0' } transition-all duration-700`}>
@@ -57,7 +58,7 @@ const Navbar = ({isActive, setIsActive, navlinks}) => {
               {navlinks.map((link) => (
                 <li
                   key={link.name}
-                  className={`flex p-4 ${isActive === link.name && 'bg-[#3a3a43]'}`}
+                  className={`flex p-4 ${isActive === link.name && 'bg-[#3a3a43]'} hover:bg-[#3a3d42] transition-colors duration-200`}
                   onClick={() => {
                     if (link.disabled) return;
                     setIsActive(link.name);

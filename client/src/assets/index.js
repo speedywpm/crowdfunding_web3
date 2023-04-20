@@ -13,6 +13,11 @@ import money from './money.svg';
 import loader from './loader.svg';
 import thirdweb from './thirdweb.png';
 import heart from './ribbon-svgrepo-com.svg'
+import coinbase from './Coinbase-logo-1.png'
+import cryptocom from './Crypto.com_logo.svg'
+import kraken from './Kraken_bitcoin_exchange_logo.png'
+import gemini from './Gemini_(digital_currency_exchange)_logo.svg'
+import ethlogo from './Ethereum_logo_2014.svg'
 
 export {
   tagType,
@@ -30,4 +35,9 @@ export {
   loader,
   thirdweb,
   heart,
+  coinbase,
+  cryptocom,
+  kraken,
+  gemini,
+  ethlogo,
 };
