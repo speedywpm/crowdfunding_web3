@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom';
 import {logo, sun} from '../assets';
+import { useStateContext } from '../context';
 //import {navlinks} from '../constants';
 import './Layout';
 const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick}) => (
@@ -16,11 +17,16 @@ const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick}) => (
 
 const Sidebar = ({isActive, setIsActive, navlinks}) => {
   const navigate = useNavigate();
+  const { clearWallet } = useStateContext();
+
+  const handleLogout = () => {
+    clearWallet();
+    window.location.href = "/";
+  };
   //const [isActive, setIsActive] = useState('dashboard')
   //const {connect, address, clearAddress} = useStateContext();
   return (
     <div className='flex items-center flex-col top-5 h-[93vh]'>
-
       <Link to="/">
         <Icon styles='w-[52px] h-[52px] bg-[#2c2f32]' imgUrl={logo}/>
       </Link>
@@ -34,6 +40,10 @@ const Sidebar = ({isActive, setIsActive, navlinks}) => {
               isActive={isActive}
               handleClick={() => {
                 if (link.disabled) return;
+                if (link.name === "logout") {
+                  handleLogout();
+                  return;
+                }
                 setIsActive(link.name);
                 navigate(link.link);
               }}

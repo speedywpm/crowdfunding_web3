@@ -1,28 +1,15 @@
-import React, {useContext, createContext, useState, useEffect} from "react";
+import React, {useContext, createContext} from "react";
 import {useAddress, useContract, useMetamask, useContractWrite} from '@thirdweb-dev/react';
 import {ethers} from 'ethers';
-import {useNavigate} from 'react-router-dom';
 
 const StateContext = createContext();
 
 export const StateContextProvider = ({children}) => {
-    const navigate = useNavigate();
     const {contract} = useContract(`0xdF5ee89F2915A718455d33d95b7f7C378d0C5Cf2`);
     const {mutateAsync: createCampaign} = useContractWrite(contract, 'createCampaign');
-    const metamaskAddress = useAddress();
-    const [address, setAddress] = useState(metamaskAddress);
+    const address = useAddress();
     const connect = useMetamask();
     
-    useEffect(() => {
-        setAddress(metamaskAddress);
-    }, [metamaskAddress]);
-
-    const clearWallet = () => {
-        setAddress(null);
-        connect.reset();
-        navigate("/");
-    };
-
     const publishCampaign = async (form) => {
         try
         {
@@ -104,7 +91,7 @@ export const StateContextProvider = ({children}) => {
       };
 
     return (
-        <StateContext.Provider value={{address, contract, connect, createCampaign: publishCampaign, getCampaigns,getUserCampaigns, getDonations, donate, withdrawFunds, clearWallet}}>
+        <StateContext.Provider value={{address, contract, connect, createCampaign: publishCampaign, getCampaigns,getUserCampaigns, getDonations, donate, withdrawFunds}}>
            {children} 
         </StateContext.Provider>
     )
