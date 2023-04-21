@@ -1,6 +1,7 @@
 import React from 'react'
 import {tagType, thirdweb} from '../assets'
 import { daysLeft } from '../utils'
+import Blockies from 'react-blockies';
 
 const truncateAddress = (address, chars = 6) => {
   return `${address.slice(0, chars)}...${address.slice(-chars)}`;
@@ -35,7 +36,8 @@ const FundCard = ({owner, title, description, target, deadline, amountCollected,
             </div>
             <div className='flex items-center mt-[0px] gap-[12px]'>
                 <div className='w-[30px] h-[30px] rounded-full flex items-center justify-center bg-[#13131a]'>
-                    <img src={thirdweb} alt='user' className='w-1/2 h-1/2 object-contain'/>
+                    <Blockies seed={owner} className='w-1/2 h-1/2 object-contain rounded-full'/>
+                    
                 </div>
                 <p className='flex-1 font-epilogue font-normal text-[12px] text-[#808191] truncate'>by <span className='text-[#b2b3bd]'>{truncatedAddress}</span></p>
             </div>

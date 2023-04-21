@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import {Link, useNavigate} from 'react-router-dom';
 import {CustomButton} from './';
 import {logo, menu, search, thirdweb} from '../assets';
+import Blockies from 'react-blockies';
 //import {navlinks} from '../constants';
 import './Layout';
 import { useStateContext } from '../context';
@@ -37,16 +38,26 @@ const Navbar = ({isActive, setIsActive, navlinks}) => {
           }}
         />
 
-        <Link to='/profile'>
-          <div className='w-[52px] h-[52px] rounded-full bg-[#2c2f32] flex justify-center items-center cursor-pointer'>
-            <img src={thirdweb} alt="user" className='w-[60%] h-[60%] object-contain'/>
-          </div>
-        </Link>
+<Link to='/profile'>
+  <div className='w-[52px] h-[52px] rounded-full bg-[#2c2f32] flex justify-center items-center cursor-pointer'>
+    {address ? (
+      <Blockies seed={address} className="w-[60%] h-[60%] rounded-full" />
+    ) : (
+      <img src={thirdweb} alt="user" className='w-[60%] h-[60%] object-contain' />
+    )}
+  </div>
+</Link>
       </div>
       <div className='sm:hidden flex justify-between items-center relative'>
+      <Link to='/profile'>
             <div className='w-[40px] h-[40px] rounded-[10px] bg-[#2c2f32] flex justify-center items-center cursor-pointer'>
-              <img src={thirdweb} alt="user" className='w-[60%] h-[60%] object-contain'/>
+            {address ? (
+      <Blockies seed={address} className="w-[60%] h-[60%] rounded-[6px]" />
+    ) : (
+      <img src={thirdweb} alt="user" className='w-[60%] h-[60%] object-contain' />
+    )}
             </div>
+            </Link>
             <Link to="/">
               <div className='w-[34px] h-[34px] flex justify-center items-center hover:bg-[#3a3d42] transition-colors duration-200 rounded-[5px]'>
                 <img src={logo} alt="logo" className='w-[30px] h-[30px] object-contain'/>

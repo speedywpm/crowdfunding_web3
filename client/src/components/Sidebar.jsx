@@ -105,7 +105,7 @@ const Sidebar = ({isActive, setIsActive, navlinks}) => {
             />
           ))}
         </div>
-        <div className='bg-white dark:bg-gray-800 text-black dark:text-white rounded-[5px] p-1'> Test </div>      
+        <div className='bg-white dark:bg-gray-800 text-black dark:text-white rounded-[5px] p-1 font-epilogue'> Test </div>      
         <Icon
           styles="bg-[#1c1c24] shadow-secondary"
           imgUrl={sun}
