@@ -25,6 +25,8 @@ const Icon = ({
         !disabled && "cursor-pointer"
       } ${styles} hover:bg-[#3a3d42] transition-colors duration-200 select-none`}
       onClick={handleClick}
+      onMouseEnter={name === "logout" ? () => setShowTooltip(true) : undefined}
+      onMouseLeave={name === "logout" ? () => setShowTooltip(false) : undefined}
     >
       {!isActive ? (
         <img src={imgUrl} alt="fund_logo" className="w-1/2 h-1/2" />
@@ -91,6 +93,7 @@ const Sidebar = ({isActive, setIsActive, navlinks}) => {
               {...link}
               isActive={isActive}
               showTooltip={showTooltip}
+              setShowTooltip={setShowTooltip}
               onMouseEnter={link.name === "logout" ? () => setShowTooltip(true) : undefined}
               onMouseLeave={link.name === "logout" ? () => setShowTooltip(false) : undefined}
               handleClick={() => {
