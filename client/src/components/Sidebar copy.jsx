@@ -4,29 +4,21 @@ import {logo, sun} from '../assets';
 import { useStateContext } from '../context';
 //import {navlinks} from '../constants';
 import './Layout';
-const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick, showTooltip, setShowTooltip}) => (
-  <div className={`relative w-[48px] h-[48px] rounded-[10px] ${isActive && isActive === name && 'bg-[#2c2f32]'} flex justify-center items-center ${!disabled && 'cursor-pointer'} ${styles} hover:bg-[#3a3d42] transition-colors duration-200`} onClick={handleClick} onMouseEnter={() => setShowTooltip(name === 'logout')} onMouseLeave={() => setShowTooltip(false)}>
+const Icon = ({styles, name, imgUrl, isActive, disabled, handleClick}) => (
+  <div className={`w-[48px] h-[48px] rounded-[10px] ${isActive && isActive === name && 'bg-[#2c2f32]'} flex justify-center items-center ${!disabled && 'cursor-pointer'} ${styles} hover:bg-[#3a3d42] transition-colors duration-200`} onClick={handleClick}>
     {!isActive ? (
       <img src={imgUrl} alt="fund_logo" className="w-1/2 h-1/2"/>
     ) : (
       <img src={imgUrl} alt="fund_logo" className={`w-1/2 h-1/2 ${isActive !== name && 'grayscale'}`}/>
     )}
-    {showTooltip && name === 'logout' && (
-      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-700 text-white text-xs rounded-lg shadow-lg">
-        Logout has to be done manually on the MetaMask wallet
-      </div>
-    )}
   </div>
 )
-
-// ... (rest of the Sidebar component)
-
 
 
 const Sidebar = ({isActive, setIsActive, navlinks}) => {
   const navigate = useNavigate();
   const { clearWallet } = useStateContext();
-  const [showTooltip, setShowTooltip] = useState(false);
+
   const handleLogout = () => {
     clearWallet();
     window.location.href = "/";
@@ -46,8 +38,6 @@ const Sidebar = ({isActive, setIsActive, navlinks}) => {
               key={link.name}
               {...link}
               isActive={isActive}
-              showTooltip={showTooltip}
-              setShowTooltip={setShowTooltip}
               handleClick={() => {
                 if (link.disabled) return;
                 if (link.name === "logout") {

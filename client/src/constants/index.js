@@ -33,6 +33,6 @@ export const navlinks = [
     name: 'logout',
     imgUrl: logout,
     link: '/',
-    disabled: false,
+    disabled: true,
   },
 ];

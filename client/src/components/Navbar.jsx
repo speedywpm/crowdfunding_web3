@@ -8,6 +8,7 @@ import { useStateContext } from '../context';
 const Navbar = ({isActive, setIsActive, navlinks}) => {
   const navigate = useNavigate();
   //const [isActive, setIsActive] = useState('dashboard');
+  const [showTooltip, setShowTooltip] = useState(false);
   const [toggleDrawer, setToggleDrawer] = useState(false);
   const {connect, address} = useStateContext();
   
@@ -55,27 +56,34 @@ const Navbar = ({isActive, setIsActive, navlinks}) => {
 
           <div className={`absolute top-[60px] right-0 left-0 bg-[#1c1c24] z-10 shadow-secondary py-4 rounded-[10px] ${!toggleDrawer ? '-translate-y-[100vh]' : 'translate-y-0' } transition-all duration-700`}>
             <ul className='mb-4'>
-              {navlinks.map((link) => (
-                <li
-                  key={link.name}
-                  className={`flex p-4 ${isActive === link.name && 'bg-[#3a3a43]'} hover:bg-[#3a3d42] transition-colors duration-200`}
-                  onClick={() => {
-                    if (link.disabled) return;
-                    setIsActive(link.name);
-                    setToggleDrawer(false);
-                    navigate(link.link);
-                  }}
-                >
-                <img
-                  src={link.imgUrl}
-                  alt={link.name}
-                  className={`w-[24px] h-[24px] object-contain ${isActive === link.name ? 'grayscale-0' : 'grayscale'}`}
-                />
-                <p className={`ml-[20px] py-1 font-epilogue font-semibold text-[14px] ${isActive === link.name ? 'text-[#1dc071]' : 'text-[#808191]'}`}>
-                  {capitalizeFirstLetter(link.name)}
-                </p>
-                </li>
-              ))}
+            {navlinks.map((link) => (
+  <li
+    key={link.name}
+    className={`relative flex p-4 ${isActive === link.name && 'bg-[#3a3a43]'}`}
+    onClick={() => {
+      if (link.disabled) return;
+      setIsActive(link.name);
+      setToggleDrawer(false);
+      navigate(link.link);
+    }}
+    onMouseEnter={() => setShowTooltip(link.name === 'logout')}
+    onMouseLeave={() => setShowTooltip(false)}
+  >
+    <img
+      src={link.imgUrl}
+      alt={link.name}
+      className={`w-[24px] h-[24px] object-contain ${isActive === link.name ? 'grayscale-0' : 'grayscale'}`}
+    />
+    <p className={`ml-[20px] py-1 font-epilogue font-semibold text-[14px] ${isActive === link.name ? 'text-[#1dc071]' : 'text-[#808191]'}`}>
+      {capitalizeFirstLetter(link.name)}
+    </p>
+    {showTooltip && link.name === 'logout' && (
+      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-gray-700 text-white text-xs rounded-lg shadow-lg">
+        Logout has to be done manually on the MetaMask wallet
+      </div>
+    )}
+  </li>
+))}
             </ul>
 
             <div className='flex mx-4 justify-center'>
