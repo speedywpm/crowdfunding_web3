@@ -1,6 +1,6 @@
 # Crowdfunding Platform Documentation
 
-This project is a crowdfunding platform built using React and the Sepolia Ethereum Testnet. Users can create, browse, and donate to crowdfunding campaigns.
+This project is a crowdfunding platform built using React and Solidity. Based on the Sepolia Ethereum Testnet. Users can create, browse, and donate to crowdfunding campaigns.
 [Live Demo](https://crowdfunding-web3-seven.vercel.app)
 
 ## Smart Contract
