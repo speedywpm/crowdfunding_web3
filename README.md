@@ -11,18 +11,18 @@ The crowdfunding platform is powered by a smart contract deployed on the Sepolia
 3. **Get Campaigns:** Retrieves all the campaigns created on the platform.
 4. **Get User Campaigns:** Retrieves campaigns created by a specific user.
 5. **Get Donations:** Retrieves all the donations made to a specific campaign.
-6. **Withdraw Funds:** Allows the campaign owner to withdraw the collected funds once the campaign has reached its goal and deadline.
+6. **Withdraw Funds:** Allows the campaign owner to see the collected funds and relevant cash-out information.
 
 ## Website Capabilities
 
 The website serves as the frontend for the crowdfunding platform and interacts with the smart contract. The website's main features include:
 
 1. **Home:** Displays a list of all crowdfunding campaigns available on the platform.
-2. **Profile:** Shows a user's campaigns and allows them to view their donations and withdraw funds from successful campaigns.
+2. **Profile:** Shows user's campaigns.
 3. **Create Campaign:** Allows a user to create a new crowdfunding campaign by providing the necessary details.
 4. **Campaign Details:** Displays the details of a specific campaign, including its donations and the ability to donate.
 5. **Payment:** Allows a user to donate to a specific campaign.
-6. **Withdraw:** Allows a campaign owner to withdraw funds from a successful campaign.
+6. **Withdraw:** Displays relevant cash-out information and how much the user has collected from their campaigns in total.
 
 ## Key Points
 
